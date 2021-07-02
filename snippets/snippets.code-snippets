@@ -1,0 +1,635 @@
+{
+	"Utility: On": {
+		"prefix": "On",
+		"body": [
+			"On(${1|type,\"marker\",\"object\",\"job_change\"|}, function(id)",
+			"    if id == ${2:something} then",
+			"        ${3:}",
+			"    end",
+			"end)",
+		],
+		"description": "Handle any emit from Utility, if you need more info check the utility_example resource"
+	},
+	"Utility: DisableControlAction": {
+		"prefix": "DisableControlAction",
+		"body": [
+			"DisableControlAction(\"${1:key}\")",
+		],
+		"description": "Improved native, you need to insert the key like a string and dont with the number/id\nExample: DisableControlAction(\"E\")\n\n*You can access the old function by using old_DisableControlAction"
+	},
+	"Utility: DisableControlForSeconds": {
+		"prefix": "DisableControlForSeconds",
+		"body": [
+			"DisableControlForSeconds(${1:key}, ${2: seconds})",
+		],
+		"description": "You can disable a control for x seconds (use string)\nExample: DisableControlForSeconds(\"E\", 2)\n\n*Dont need to be called every tick"
+	},
+	"Utility: IsControlJustPressed": {
+		"prefix": "IsControlJustPressed",
+		"body": [
+			"IsControlJustPressed(${1:key}, function()",
+			"    ${2:}",
+			"end)"
+		],
+		"description": "Equal to the normal native but use string and dont number (USE THE RegisterKeyMapping)\n\n*Dont need to be called every tick"
+	},
+	"Utility: ShowNotification": {
+		"prefix": "ShowNotification",
+		"body": [
+			"ShowNotification(${1:text})",
+		],
+		"description": "Create a notification above the minimap\nExample: ShowNotification(\"Hello!\")\n\n*Need to be called every tick"
+	},
+	"Utility: ButtonNotification": {
+		"prefix": "ButtonNotification",
+		"body": [
+			"ButtonNotification(${1:text})",
+		],
+		"description": "Create a notification in the top-left, you can use {any_letter} for make show up the corresponding button\nExample: ButtonNotification(\"{E} To say: i love Utility_libs\")\n\n*Need to be called every tick"
+	},
+	"Utility: FloatingNotification": {
+		"prefix": "FloatingNotification",
+		"body": [
+			"FloatingNotification(${1:text}, ${2:coords})",
+		],
+		"description": ""
+	},
+	"Utility: MakeEntityFaceEntity": {
+		"prefix": "MakeEntityFaceEntity",
+		"body": [
+			"MakeEntityFaceEntity(${1:entity1}, ${2:entity2}, ${2:trueif1_falseif2})",
+		],
+		"description": "Makes the two entered entities look in the face"
+	},
+	"Utility: DrawText3Ds": {
+		"prefix": "DrawText3Ds",
+		"body": [
+			"DrawText3Ds(${1:coords}, ${2:text}, ${3:scale}, ${4:font}, ${5:rectangle})",
+		],
+		"description": "Draw a 3d text"
+	},
+	"Utility: TaskPlayAnim": {
+		"prefix": ["TaskPlayAnim", "RequestAnimDict"],
+		"body": [
+			"TaskPlayAnim(${1:ped}, ${2:animDictionary}, ${3:animationName}, ${4:blendInSpeed}, ${5:blendOutSpeed}, ${6|duration,-1|}, ${7:flag}, ${8:playbackRate}, ${9:lockX}, ${10:lockY}, ${11:lockZ})",
+		],
+		"description": "Improved native, is equal to the standard one but dont need to load or request the anim dict, all will be done by the utility"
+	},
+	"Utility: CreateObject": {
+		"prefix": ["CreateObject", "RequestModel"],
+		"body": [
+			"local obj, netId = CreateObject(${1:model}, vector3(${2:x}, ${3:y}, ${4:z}), ${5|isNetwork,true,false|})",
+		],
+		"description": "Improved native, is equal to the standard one but dont need to load or request the model, all will be done by the utility\n\n*The model can be the name of the model, the utility it automatically get the hash key of it"
+	},
+	"Utility: CreatePed": {
+		"prefix": ["CreatePed", "RequestModel"],
+		"body": [
+			"local ped, netId = CreatePed(${1:model}, vector3(${2:x}, ${3:y}, ${4:z}), ${5:heading}, ${6|isNetwork,true,false|})",
+		],
+		"description": "Improved native, is equal to the standard one but dont need to load or request the model, all will be done by the utility\n\n*The model can be the name of the model, the utility it automatically get the hash key of it"
+	},
+	"Utility: CreateVehicle": {
+		"prefix": ["CreateVehicle", "RequestModel"],
+		"body": [
+			"local veh, netId = CreateVehicle(${1:model}, vector3(${2:x}, ${3:y}, ${4:z}), ${5:heading}, ${6|isNetwork,true,false|}, ${7|netMissionEntity,true,false|})",
+		],
+		"description": "Improved native, is equal to the standard one but dont need to load or request the model, all will be done by the utility\n\n*The model can be the name of the model, the utility it automatically get the hash key of it"
+	},
+	"Utility: DeleteEntity": {
+		"prefix": "DeleteEntity",
+		"body": [
+			"DeleteEntity(${1:entity}, ${2|isNetID,true,false|})",
+		],
+		"description": "Improved native, Before the deletion set the entity as a mission entity"
+	},
+	"Utility: RegisterNetEvent": {
+		"prefix": "RegisterNetEvent",
+		"body": [
+			"RegisterNetEvent(${1:eventName}, function()",
+			"    ${2:}",
+			"end)",
+		],
+		"description": "Register a net event and automatically assign an event handler (dont need to write AddEventHandler)"
+	},
+	"Utility: GetPlayerName": {
+		"prefix": "GetPlayerName",
+		"body": [
+			"GetPlayerName()",
+		],
+		"description": "Improved native, by default the id is the client player id (dont need to write the PlayerId() native)"
+	},
+	"Utility: PlayerPedId": {
+		"prefix": "PlayerPedId",
+		"body": [
+			"PlayerPedId()",
+		],
+		"description": "Improved native, is equal to the standard one but get the data from a saved variable in a table, simply dont call the native every time (small optimization)"
+	},
+	"Utility: CreateLoop": {
+		"prefix": "CreateLoop",
+		"body": [
+			"CreateLoop(function()",
+			"    ${0:}",
+			"end)"
+		],
+		"description": "Create a loop without all that messy code, tick time for default is 5, you can change it by setting it after the function"
+	},
+	"Utility: _break (only in a loop created by the utility)": {
+		"prefix": "_break",
+		"body": [
+			"_break()",
+		],
+		"description": "Break the loop"
+	},
+	"Utility: LoopThread (only in a loop created by the utility)": {
+		"prefix": "LoopThread",
+		"body": [
+			"LoopThread(${1:id}, ${2:time}, function()",
+			"    ${3:}",
+			"end)",
+		],
+		"description": "Create a loop thread, simply execute the code in the function every ms you setted in the time, you can use it for update position or other thing without creating another loop"
+	},
+	"Utility: StopLoopThread (only in a loop created by the utility)": {
+		"prefix": "StopLoopThread",
+		"body": [
+			"StopLoopThread(${1:id})",
+		],
+		"description": "Stop a loop thread"
+	},
+	"Utility: ResumeLoopThread (only in a loop created by the utility)": {
+		"prefix": "ResumeLoopThread",
+		"body": [
+			"ResumeLoopThread(${1:id})",
+		],
+		"description": "Resume a stopped loop thread"
+	},
+	"Utility: TaskBack (only in a loop created by the utility)": {
+		"prefix": "TaskBack",
+		"body": [
+			"TaskBack(${1:id}, function()",
+			"    ${1:}",
+			"end)",
+		],
+		"description": "Task that run code at 5000ms"
+	},
+	"Utility: TaskSlow (only in a loop created by the utility)": {
+		"prefix": "TaskSlow",
+		"body": [
+			"TaskSlow(${1:id}, function()",
+			"    ${1:}",
+			"end)",
+		],
+		"description": "Task that run code at 1000ms"
+	},
+	"Utility: TaskFast (only in a loop created by the utility)": {
+		"prefix": "TaskFast",
+		"body": [
+			"TaskFast(${1:id}, function()",
+			"    ${1:}",
+			"end)",
+		],
+		"description": "Task that run code at 500ms"
+	},
+	"Utility: TaskExtraFast (only in a loop created by the utility)": {
+		"prefix": "TaskExtraFast",
+		"body": [
+			"TaskExtraFast(${1:id}, function()",
+			"    ${1:}",
+			"end)",
+		],
+		"description": "Task that run code at 5ms"
+	},
+	"Utility: GetWorldClosestPed": {
+		"prefix": "GetWorldClosestPed",
+		"body": [
+			"local closest, allpedfounded = GetWorldClosestPed(${1:radius})",
+		],
+		"description": "Return the closest ped and all the ped founded"
+	},
+	"Utility: GetWorldClosestPlayer": {
+		"prefix": "GetWorldClosestPlayer",
+		"body": [
+			"local closest, allplayerfounded = GetWorldClosestPlayer(${1:radius})",
+		],
+		"description": "Return the closest player and all the player founded"
+	},
+	"Utility: GetEntitySurfaceMaterial": {
+		"prefix": "GetEntitySurfaceMaterial",
+		"body": [
+			"local surface_hash, founded = GetEntitySurfaceMaterial(${1:entity})",
+		],
+		"description": "Return the material hash where the entity is, like if you are on the road it return the hash of the road material"
+	},
+	"Utility: TriggerSyncedEvent": {
+		"prefix": ["TriggerSyncedEvent"],
+		"body": [
+			"TriggerSyncedEvent(${1:eventName}, ${2:whitelist}, ${3:...})",
+		],
+		"description": "Trigger a client event for ALL client, useful for sync something for all the clients"
+	},
+
+
+	"Utility: StartESX": {
+		"prefix": "StartESX",
+		"body": [
+			"StartESX()",
+		],
+		"description": "Simply start ESX with a line\ndont need any callback all all will be done automatically\nit also automatically loads player data\n(like the job, that auto update)\n\n*The two arguments can be empty\nif you dont have a \nsecond job or a esxEvent changed\nYou can use the ESX and the xPlayer\nvariable to access to the ESX framework"
+	},
+	"Utility: GetDataForJob": {
+		"prefix": "GetDataForJob",
+		"body": [
+			"local count, workers = GetDataForJob(${1:job})",
+		],
+		"description": "Return the worker (table) and the number of current players that is doing that job"
+	},
+	"Utility: AddItem": {
+		"prefix": "AddItem",
+		"body": [
+			"AddItem(${1:item}, ${2:amount})",
+		],
+		"description": "WORKS ONLY IF ITS TURNED ON IN THE CONFIG OF THE UTILITY"
+	},
+	"Utility: GetItem": {
+		"prefix": "GetItem",
+		"body": [
+			"GetItem(${1:item})",
+		],
+		"description": "WORKS ONLY IF ITS TURNED ON IN THE CONFIG OF THE UTILITY"
+	},
+	"Utility: RemoveItem": {
+		"prefix": "RemoveItem",
+		"body": [
+			"RemoveItem(${1:item}, ${2:amount})",
+		],
+		"description": "WORKS ONLY IF ITS TURNED ON IN THE CONFIG OF THE UTILITY"
+	},
+	"Utility: AddMoney": {
+		"prefix": "AddMoney",
+		"body": [
+			"AddMoney(${1|type,\"cash\",\"bank\",\"black_money\"}, ${2:amount})",
+		],
+		"description": "WORKS ONLY IF ITS TURNED ON IN THE CONFIG OF THE UTILITY"
+	},
+	"Utility: RemoveMoney": {
+		"prefix": "RemoveMoney",
+		"body": [
+			"RemoveMoney(${1|type,\"cash\",\"bank\",\"black_money\"}, ${2:amount})",
+		],
+		"description": "WORKS ONLY IF ITS TURNED ON IN THE CONFIG OF THE UTILITY"
+	},
+
+
+	"Utility: GetOnHandObject": {
+		"prefix": "GetOnHandObject",
+		"body": [
+			"GetOnHandObject()",
+		],
+		"description": "Return 0 if no object in the hand, otherwise return the object id"
+	},
+	"Utility: TakeObjectOnHand": {
+		"prefix": "TakeObjectOnHand",
+		"body": [
+			"TakeObjectOnHand(${1:ped}, ${2:entityToGrab})",
+		],
+		"description": "You can use model name/hash or the entity handler for the entityToGrab arguments, if you pass a model name/hash the object will be created by the utility"
+	},
+	"Utility: DropObjectFromHand": {
+		"prefix": "DropObjectFromHand",
+		"body": [
+			"DropObjectFromHand(${1:entityToDrop}, ${2|delete,true,false|})",
+		],
+		"description": "The delete argument specific if delete the entity or no"
+	},
+	"Utility: GetDataFromDb": {
+		"prefix": "GetDataFromDb",
+		"body": [
+			"GetDataFromDb(${1:settings})",
+		],
+		"description": "Return a table with all data collected from the DB, Example: \n\nGetDataFromDb(\"SELECT data\")\nGetDataFromDb(\"SELECT *\")\nGetDataFromDb(\"SELECT * WHERE id = 1\")\nGetDataFromDb(\"SELECT * WHERE id, data = 1, example\")"
+	},
+	"Utility: SaveDataToDb": {
+		"prefix": "SaveDataToDb",
+		"body": [
+			"SaveDataToDb(${1:settings})",
+		],
+		"description": "Save data to DB, Example: \n\nSaveDataToDb(\"INSERT data = example\")\nSaveDataToDb(\"INSERT data, data2 = example, example2\")"
+	},
+	"Utility: UpdateDataToDb": {
+		"prefix": "UpdateDataToDb",
+		"body": [
+			"UpdateDataToDb(${1:settings})",
+		],
+		"description": "Update data to DB, Example: \n\nUpdateDataToDb(\"UPDATE data = example\")\nUpdateDataToDb(\"UPDATE data, data2 = example, example2\")\nUpdateDataToDb(\"UPDATE data = example WHERE id = 1\")\nUpdateDataToDb(\"UPDATE data, data2 = example, example2 WHERE id = 1\")"
+	},
+	"Utility: StartDialogue": {
+		"prefix": "StartDialogue",
+		"body": [
+			"StartDialogue(${1:entity}, ${2:distance}, function(question, response)",
+			"    ",
+			"end)",
+			".Question({",
+			"    \"${3:firstq}\",",
+			"})",
+			".Response(",
+			"    {",
+			"        [\"${4:button}\"] = \"${5:avilable_response}\"",
+			"    },",
+			")",
+			".LastQuestion(${6:lastq})"
+		],
+		"description": "Start a dialogue with an entity"
+	},
+	"Utility: EditDialogue": {
+		"prefix": "EditDialogue",
+		"body": [
+			"EditDialogue()",
+			".Question({",
+			"    \"${3:firstq}\",",
+			"})",
+			".Response(",
+			"    {",
+			"        [\"${4:button}\"] = \"${5:avilable_response}\"",
+			"    },",
+			")",
+			".LastQuestion(${6:lastq})"
+		],
+		"description": "Start a dialogue with an entity"
+	},
+	"Utility: StopDialogue": {
+		"prefix": "StopDialogue",
+		"body": [
+			"StopDialogue()",
+		],
+		"description": "Stop the current question"
+	},
+	"Utility: SetFor": {
+		"prefix": "SetFor",
+		"body": [
+			"SetFor(${1:id}, ${2:property}, ${3:value})",
+		],
+		"description": "With that you can set any, i told ANY, value to an marker, an object, an number or anything else, you can see some example of usage in the utility_example script"
+	},
+	"Utility: GetFrom": {
+		"prefix": "GetFrom",
+		"body": [
+			"GetFrom(${1:id}, ${2:property})",
+		],
+		"description": "Get data from a saved SetFor"
+	},
+	"Utility: _g": {
+		"prefix": "_g",
+		"body": [
+			"_g(${1:name}, ${2:value})",
+		],
+		"description": "Set a global variable"
+	},
+	"Utility: RandomId": {
+		"prefix": "RandomId",
+		"body": [
+			"RandomId(${1:length})",
+		],
+		"description": "Generate a random number of the length you setted, you can leave the arguments empty to generate a totally random number"
+	},
+	"Utility: CreateMarker": {
+		"prefix": ["CreateMarker", "DrawMarker"],
+		"body": [
+			"CreateMarker(${1:id}, vector3(${2:x}, ${3:y}, ${4:z}), ${5:render_distance}, ${6:interaction_distance}, ${7:options})",
+		],
+		"description": "Create a marker that can be interactable, must be handled by On()"
+	},
+
+	"Utility: SetMarkerType": {
+		"prefix": ["SetMarkerType"],
+		"body": [
+			"SetMarkerType(${1:id}, ${2:type})",
+		],
+		"description": ""
+	},
+	"Utility: SetMarkerDirection": {
+		"prefix": ["SetMarkerDirection"],
+		"body": [
+			"SetMarkerDirection(${1:id}, vector3(${2:x}, ${3:y}, ${4:z}))",
+		],
+		"description": ""
+	},
+	"Utility: SetMarkerRotation": {
+		"prefix": ["SetMarkerRotation"],
+		"body": [
+			"SetMarkerRotation(${1:id}, vector3(${2:x}, ${3:y}, ${4:z}))",
+		],
+		"description": ""
+	},
+	"Utility: SetMarkerScale": {
+		"prefix": ["SetMarkerScale"],
+		"body": [
+			"SetMarkerScale(${1:id}, vector3(${2:x}, ${3:y}, ${4:z}))",
+		],
+		"description": ""
+	},
+	"Utility: SetMarkerColor": {
+		"prefix": ["SetMarkerColor"],
+		"body": [
+			"SetMarkerColor(${1:id}, {${2:r}, ${3:g}, ${4:b}})",
+		],
+		"description": ""
+	},
+	"Utility: SetMarkerAlpha": {
+		"prefix": ["SetMarkerAlpha"],
+		"body": [
+			"SetMarkerAlpha(${1:id}, ${2:alpha})",
+		],
+		"description": ""
+	},
+	"Utility: SetMarkerAnimation": {
+		"prefix": ["SetMarkerAnimation"],
+		"body": [
+			"SetMarkerAnimation(${1:id}, ${2|active,true,false|})",
+		],
+		"description": "Toggle the bouncing animation"
+	},
+	"Utility: SetMarkerDrawOnEntity": {
+		"prefix": ["SetMarkerDrawOnEntity"],
+		"body": [
+			"SetMarkerDrawOnEntity(${1:id}, ${2|active,true,false|})",
+		],
+		"description": ""
+	},
+	"Utility: DeleteMarker": {
+		"prefix": ["DeleteMarker"],
+		"body": [
+			"DeleteMarker(${1:id})",
+		],
+		"description": ""
+	},
+	"Utility: CreateiObject": {
+		"prefix": ["CreateiObject"],
+		"body": [
+			"CreateiObject(${1:id}, ${2:model}, vector3(${2:x}, ${3:y}, ${4:z}), ${5:heading}, ${6:interaction_distance}, ${7|network,true,false|})",
+		],
+		"description": "Create a iobject (an interactable object), must be handled by On()\n\n*The model name can be the hash or the name of the model"
+	},
+	"Utility: DeleteiObject": {
+		"prefix": ["DeleteiObject"],
+		"body": [
+			"DeleteiObject(${1:id}, ${2|delete,true,false|}",
+		],
+		"description": "if the delete argument setted to true it effectively eliminate the entity, otherwise it only eliminate the interaction"
+	},
+	"Utility: CreateBlip": {
+		"prefix": ["CreateBlip", "AddBlipForCoord"],
+		"body": [
+			"CreateBlip(${1:name}, vector3(${2:x}, ${3:y}, ${4:z}), ${5:sprite}, ${6:colour}, ${7:scale})",
+		],
+		"description": "Simply create a blip, return the blip handler"
+	},
+	"Utility: SetIdOf": {
+		"prefix": ["SetIdOf"],
+		"body": [
+			"SetIdOf(${1|type,\"marker\",\"object\"|}, ${2:id}, ${3:new_id})",
+		],
+		"description": "Change the id of the type you inserted, Available type:\n\n\"Marker\" or \"m\" (case insensitive)\n\"Object\" or \"o\" (case insensitive)"
+	},
+	"Utility: SetTextOf": {
+		"prefix": ["SetTextOf"],
+		"body": [
+			"SetTextOf(${1|type,\"marker\",\"object\"|}, ${2:id}, ${3:new_text})",
+		],
+		"description": "Change the text of the type you inserted, Available type:\n\n\"Marker\" or \"m\" (case insensitive)\n\"Object\" or \"o\" (case insensitive)"
+	},
+	"Utility: GetDistanceFrom": {
+		"prefix": ["GetDistanceFrom"],
+		"body": [
+			"GetDistanceFrom(${1|type,\"marker\",\"object\"|}, ${2:id})",
+		],
+		"description": "Get distance between the player and id of the type you inserted, Available type:\n\n\"Marker\" or \"m\" (case insensitive)\n\"Object\" or \"o\" (case insensitive)"
+	},
+	"Utility: GetCoordOf": {
+		"prefix": ["GetCoordOf"],
+		"body": [
+			"GetCoordOf(${1|type,\"marker\",\"object\"|}, ${2:id})",
+		],
+		"description": "Get coords of id of the type you inserted, Available type:\n\n\"Marker\" or \"m\" (case insensitive)\n\"Object\" or \"o\" (case insensitive)"
+	},
+	"Utility: DoesExist": {
+		"prefix": ["DoesExist"],
+		"body": [
+			"DoesExist(${1|type,\"marker\",\"object\"|}, ${2:id})",
+		],
+		"description": "Check if id of the type you inserted exist, Available type:\n\n\"Marker\" or \"m\" (case insensitive)\n\"Object\" or \"o\" (case insensitive)"
+	},
+	"Utility: CreateCamera": {
+		"prefix": ["CreateCamera"],
+		"body": [
+			"CreateCamera(vector3(${1:x}, ${2:y}, ${3:z}), vector3(${4:x}, ${5:y}, ${6:z}), ${7|active,true,false|}, ${8:shake_settings})",
+		],
+		"description": "Create a camera"
+	},
+	"Utility: SwitchBetweenCam": {
+		"prefix": ["SwitchBetweenCam"],
+		"body": [
+			"SwitchBetweenCam(${1:old_cam}, ${2:new_cam})",
+		],
+		"description": ""
+	},
+	"Utility: DeleteCamera": {
+		"prefix": ["DeleteCamera"],
+		"body": [
+			"DeleteCamera(${1:cam})",
+		],
+		"description": ""
+	},
+	"Utility: DevMode": {
+		"prefix": ["DevMode"],
+		"body": [
+			"DevMode(${1|active,true,false|}, ${2|time,true,false|}, ${3:custom_format})",
+		],
+		"description": "Activate the developer mode, print on the F8 everything maked by the Utility\n\ntime is a boolean, you can turn on or off the time in the F8\ncustom_format you can use the string.format of lua for format how you want the print\nExample:\n\n DevMode(true, false, \"%s | %s | %s\")"
+	},
+	"Utility: ReplaceTexture": {
+		"prefix": ["ReplaceTexture"],
+		"body": [
+			"ReplaceTexture(${1:model}, ${2:textureName}, ${3:url}, ${4:width}, ${5:height})",
+		],
+		"description": "With that native you can replace the texture of any entity, you can create 3D NUI or stream a .gif"
+	},
+	"Utility: printd": {
+		"prefix": ["printd"],
+		"body": [
+			"printd(${1:table})",
+		],
+		"description": "Print the dumped table"
+	},
+	"Utility: string.multigsub": {
+		"prefix": ["string.multigsub"],
+		"body": [
+			"string.multigsub(${1:string}, ${2:from}, ${3:to})",
+		],
+		"description": "Replace multi thing without make 30 different string.gsub, works with table"
+	},
+	"Utility: table.fexist": {
+		"prefix": ["table.fexist"],
+		"body": [
+			"table.fexist(${1:table}, ${2:field})",
+		],
+		"description": "Check if field exist in table"
+	},
+	"Utility: table.remove": {
+		"prefix": ["table.remove"],
+		"body": [
+			"table.remove(${1:table}, ${2:index}, ${3|onlyfirst, true, false|})",
+		],
+		"description": "Equal to table.remove but you can remove from table the string index and not only the number index"
+	},
+	"Utility: table.empty": {
+		"prefix": ["table.empty"],
+		"body": [
+			"table.empty(${1:table})",
+		],
+		"description": "Check if the table is empty"
+	},
+	"Utility: table.clone": {
+		"prefix": ["table.clone"],
+		"body": [
+			"table.clone(${1:table})",
+		],
+		"description": "Return the cloned table"
+	},
+	"Utility: FakeTrigger": {
+		"prefix": ["FakeTrigger", "TriggerEvent(\"Utility:FakeTrigger\")", "TriggerClientEvent(\"Utility:FakeTrigger\")"],
+		"body": [
+			"TriggerEvent(\"Utility:FakeTrigger\", ${1|type,\"marker\",\"object\"|}, ${2:id})",
+		],
+		"description": "Fake trigger a marker or a iobject"
+	},
+	"Utility [Client]": {
+		"prefix": ["Utility"],
+		"body": [
+			"\"@utility_libs/client/native.lua\",",
+		],
+		"description": ""
+	},
+	"Utility [Server]": {
+		"prefix": ["Utility"],
+		"body": [
+			"\"@utility_libs/server/native.lua\",",
+		],
+		"description": ""
+	},
+	"Utility [Client-Minified]": {
+		"prefix": ["Utility"],
+		"body": [
+			"\"@utility_libs/client/native_min.lua\",",
+		],
+		"description": ""
+	},
+	"Utility [Server-Minified]": {
+		"prefix": ["Utility"],
+		"body": [
+			"\"@utility_libs/server/native_min.lua\",",
+		],
+		"description": ""
+	},
+}

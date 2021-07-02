@@ -1,0 +1,33 @@
+{
+	"name": "utility-lib-snippets",
+	"displayName": "Utility Snippets",
+	"description": "Code snippets for the Utility library",
+	"publisher": "XenoS",
+	"version": "0.0.13",
+	"icon": "assets/logo.png",
+	"license": "MIT",
+	"engines": {
+		"vscode": "^1.56.0"
+	},
+	"categories": [
+		"snippet"
+	],
+	"contributes": {
+		"snippets": [
+			{
+				"language": "lua",
+				"path": "./snippets/snippets.code-snippets"
+			}
+		]
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/XenoS-ITA/utility_libs_snippets.git"
+	},
+	"__metadata": {
+		"id": "dd4390c1-3ec7-4d73-b8c5-c85a0cfdd1ee",
+		"publisherId": "31ffe665-3c96-4ecb-b248-20b73eaa2708",
+		"publisherDisplayName": "XenoS",
+		"installedTimestamp": 1621127507774
+	}
+}
